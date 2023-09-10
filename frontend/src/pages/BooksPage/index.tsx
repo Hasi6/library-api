@@ -26,14 +26,6 @@ function BooksPage() {
         ),
       },
       {
-        id: 'name',
-        label: 'Name',
-      },
-      {
-        id: 'isbn',
-        label: 'ISBN',
-      },
-      {
         id: 'author',
         label: 'Author',
         render: (attributes) => (
@@ -46,6 +38,14 @@ function BooksPage() {
             }`}
           </Link>
         ),
+      },
+      {
+        id: 'name',
+        label: 'Name',
+      },
+      {
+        id: 'isbn',
+        label: 'ISBN',
       },
     ];
   };
