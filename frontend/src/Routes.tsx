@@ -1,9 +1,12 @@
 import { Outlet, Routes as ReactRouter, Route } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 
 import Loadable from '@/components/atoms/Loadable';
-import { ROUTES } from './utils/constants';
-import AppLayout from './components/templates/AppLayout';
+import { ROUTES } from '@/utils/constants';
+import AppLayout from '@/components/templates/AppLayout';
+import { getQueryParams } from '@/utils/queryParams';
+import { useAppDispatch } from '@/hooks/useRedux';
+import { setFilters } from '@/store/filters';
 
 const HomePage = Loadable(lazy(() => import('@/pages/HomePage')));
 const BooksPage = Loadable(lazy(() => import('@/pages/BooksPage')));
@@ -14,6 +17,22 @@ const AuthorDetailsPage = Loadable(
 );
 
 function Routes() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    initFilters();
+  }, []);
+
+  const initFilters = () => {
+    const { url, params } = getQueryParams();
+    dispatch(
+      setFilters({
+        url,
+        params,
+      })
+    );
+  };
+
   return (
     <ReactRouter>
       <Route

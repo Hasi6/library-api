@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import http from '@/services/http';
 import { toast } from 'react-toastify';
-import { useAppSelector } from './useRedux';
+
+import http from '@/services/http';
+import { useAppSelector } from '@/hooks/useRedux';
 
 export interface Meta {
   totalPages: number;
@@ -16,7 +17,11 @@ interface IProps {
   pageSize?: number;
 }
 
-function useQuery<Resource>({ url, notFetchOnLoad, customHeaders = {} }: IProps) {
+function useQuery<Resource>({
+  url,
+  notFetchOnLoad,
+  customHeaders = {},
+}: IProps) {
   const { url: filters } = useAppSelector((store) => store.filters);
   const [data, setData] = useState<Resource | null>(null);
   const [meta, setMeta] = useState<Meta | null>(null);
@@ -27,7 +32,7 @@ function useQuery<Resource>({ url, notFetchOnLoad, customHeaders = {} }: IProps)
     if (!notFetchOnLoad) {
       fetchData();
     }
-  }, []);
+  }, [filters]);
 
   const fetchData = async () => {
     setLoading(true);

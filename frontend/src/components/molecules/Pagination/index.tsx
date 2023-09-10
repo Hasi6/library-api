@@ -1,9 +1,8 @@
 import { Pagination } from '@mantine/core';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux';
-import { getQueryParams } from '@/utils/queryParams';
-import { Query } from '@/containers/FilterPanel';
+import { Query, getQueryParams } from '@/utils/queryParams';
 import queryString from 'query-string';
 import { setFilters } from '@/store/filters';
 
@@ -28,11 +27,13 @@ const PaginationContainer: FC<Props> = ({ total }) => {
       setFilters({
         url: query,
         params: simpleSearch,
-      }),
+      })
     );
   };
 
-  return <Pagination value={currentPage} onChange={handleChangePage} total={total} />;
+  return (
+    <Pagination value={currentPage} onChange={handleChangePage} total={total} />
+  );
 };
 
 export default PaginationContainer;

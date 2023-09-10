@@ -3,10 +3,11 @@ import { z } from 'zod';
 import { authorAttributes } from '@/models/author';
 
 export const bookAttributes = z.object({
-  name: z.string(),
-  isbn: z.string(),
-  authorId: z.string(),
   author: authorAttributes,
+  authorId: z.string(),
+  id: z.string(),
+  isbn: z.string(),
+  name: z.string(),
 });
 
 export type BookZ = z.infer<typeof bookAttributes>;
