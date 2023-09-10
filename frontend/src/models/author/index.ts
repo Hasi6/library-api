@@ -7,3 +7,8 @@ export const authorAttributes = z.object({
 });
 
 export type AuthorZ = z.infer<typeof authorAttributes>;
+
+export const authorCreateSchema = z.object({
+  firstName: z.string().nonempty({ message: 'First name is required' }),
+  lastName: z.string().nonempty({ message: 'Last name is required' }),
+});

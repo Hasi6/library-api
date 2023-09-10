@@ -11,3 +11,9 @@ export const bookAttributes = z.object({
 });
 
 export type BookZ = z.infer<typeof bookAttributes>;
+
+export const bookCreateSchema = z.object({
+  name: z.string().nonempty({ message: 'Name is required' }),
+  isbn: z.string().nonempty({ message: 'ISBN is required' }),
+  authorId: z.string().nonempty({ message: 'Author is required' }),
+});

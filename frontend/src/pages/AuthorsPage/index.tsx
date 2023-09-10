@@ -4,9 +4,10 @@ import TableContainer from '@/containers/TableContainer';
 import { useQuery } from '@/hooks/useQuery';
 import { API_ROUTES, ROUTES } from '@/utils/constants';
 import { AuthorZ } from '@/models/author';
+import NewAuthorModal from '@/components/molecules/NewAuthorModal';
 
 function AuthorsPage() {
-  const { data, loading, meta } = useQuery<AuthorZ[]>({
+  const { data, loading, meta, retry } = useQuery<AuthorZ[]>({
     url: API_ROUTES.AUTHORS.BASE,
   });
 
@@ -37,6 +38,9 @@ function AuthorsPage() {
 
   return (
     <>
+      <div className='flex justify-end'>
+        <NewAuthorModal onAfterSuccess={retry} />
+      </div>
       <TableContainer
         columns={generateColumn()}
         data={data || []}

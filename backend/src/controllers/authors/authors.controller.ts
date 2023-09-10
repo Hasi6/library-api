@@ -22,7 +22,8 @@ export class AuthorsController extends BaseApi {
   }
 
   public async getAll(_req: Request, _res: Response) {
-    const { data, meta } = await AuthorsService.getAll(queryParamsWithPageDetails(_req));
+    const isAll = _req.query.isAll === 'true';
+    const { data, meta } = await AuthorsService.getAll(queryParamsWithPageDetails(_req), isAll);
     return ResponseBuilder.successResponseWithPagination(_res, data, meta);
   }
 

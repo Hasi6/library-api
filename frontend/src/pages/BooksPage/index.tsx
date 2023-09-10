@@ -4,9 +4,10 @@ import TableContainer from '@/containers/TableContainer';
 import { useQuery } from '@/hooks/useQuery';
 import { BookZ } from '@/models/book';
 import { API_ROUTES, ROUTES } from '@/utils/constants';
+import NewBookModal from '@/components/molecules/NewBookModal';
 
 function BooksPage() {
-  const { data, loading, meta } = useQuery<BookZ[]>({
+  const { data, loading, meta, retry } = useQuery<BookZ[]>({
     url: API_ROUTES.BOOKS.BASE,
   });
 
@@ -51,6 +52,9 @@ function BooksPage() {
 
   return (
     <>
+      <div className='flex justify-end'>
+        <NewBookModal onAfterSuccess={retry} />
+      </div>
       <TableContainer
         columns={generateColumn()}
         data={data || []}

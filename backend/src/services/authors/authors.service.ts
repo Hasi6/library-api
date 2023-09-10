@@ -5,12 +5,14 @@ import logger from '@utils/logger';
 import { Query, paginationBuilder } from '@utils/paginationBuilder';
 
 export class AuthorsService {
-  public static async getAll(query: Query) {
+  public static async getAll(query: Query, isAll?: boolean) {
     try {
-      const authors = await Author.findAll({
-        limit: query.pageSize,
-        offset: query.skip
-      });
+      const authors = isAll
+        ? await Author.findAll()
+        : await Author.findAll({
+            limit: query.pageSize,
+            offset: query.skip
+          });
       const count = await Author.count();
       return paginationBuilder(authors, count, query);
     } catch (err) {

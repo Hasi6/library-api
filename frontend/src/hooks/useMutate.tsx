@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import { HTTP_TYPES } from '@/utils/constants';
 import http from '@/services/http';
-import { FormattedError, exceptionHandler } from '@/utils/execptionHandler';
+import { exceptionHandler } from '@/utils/execptionHandler';
 
 interface IProps {
   url: string;
@@ -17,7 +17,7 @@ const useMutation = ({ url }: IProps) => {
     body: object,
     method?: HTTP_TYPES,
     customHeaders?: object,
-    requestUrl?: string,
+    requestUrl?: string
   ) => {
     setLoading(true);
 
@@ -27,7 +27,11 @@ const useMutation = ({ url }: IProps) => {
       },
     };
     try {
-      const response = await http[method || HTTP_TYPES.POST](requestUrl || url, body, headers);
+      const response = await http[method || HTTP_TYPES.POST](
+        requestUrl || url,
+        body,
+        headers
+      );
       setLoading(false);
       return {
         success: true,
