@@ -3,8 +3,6 @@ import request from 'supertest';
 import app, { server } from '../../../src';
 import { sleep } from '../../../src/utils/helpers';
 
-let bookId = '';
-
 describe('Book Endpoints', () => {
   afterAll(async () => {
     server.close();
