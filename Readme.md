@@ -2,6 +2,16 @@
 
 basic API and UI for manage authors and books
 
+## Technology Stack
+
+- **Frontend:**
+
+  - React with TypeScript
+
+- **Backend:**
+  - Node.js with Express and TypeScript
+  - Database: SQLite
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
