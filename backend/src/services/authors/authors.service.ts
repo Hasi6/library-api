@@ -31,8 +31,8 @@ export class AuthorsService {
 
   public static async create(body: Omit<IAuthor, 'id'>) {
     try {
-      await Author.create(body);
-      return { success: true };
+      const author = await Author.create(body, { returning: true });
+      return author;
     } catch (err) {
       logger.error(err);
       throw err;
@@ -43,7 +43,8 @@ export class AuthorsService {
     try {
       const author = await Author.update(body, { where: { id } });
       if (author[0] > 0) {
-        return { success: true };
+        const updatedAuthor = await Author.findByPk(id);
+        return updatedAuthor;
       }
 
       throw new BadRequestError('Author not found');

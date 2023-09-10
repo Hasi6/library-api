@@ -45,7 +45,8 @@ export class BooksService {
       const book = await Book.update(body, { where: { id } });
 
       if (book[0] > 0) {
-        return { success: true };
+        const updatedBook = await Book.findByPk(id);
+        return updatedBook;
       }
 
       throw new BadRequestError('Book not found');

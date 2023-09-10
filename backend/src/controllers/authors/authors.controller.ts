@@ -34,7 +34,7 @@ export class AuthorsController extends BaseApi {
   @BodyValidator()
   public async create(_req: Request, _res: Response) {
     const data = await AuthorsService.create(_req.body);
-    return ResponseBuilder.successResponse(_res, data);
+    return ResponseBuilder.successResponse(_res, data, 201);
   }
 
   @BodyValidator()
