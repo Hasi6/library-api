@@ -1,5 +1,5 @@
 import { TextInput } from '@mantine/core';
-import { UseFormReturnType, useForm } from '@mantine/form';
+import { UseFormReturnType } from '@mantine/form';
 
 interface Props<T> {
   className?: string;
@@ -49,16 +49,18 @@ function InputContainer<T>({
               // @ts-ignore
               value={form.values?.[id]}
               placeholder={placeHolder}
-              className={`${error ? '!border-[#bb4343]' : ''} w-full px-[16px] outline-none ${
-                className ? className : ''
-              }`}
+              className={`${
+                error ? '!border-[#bb4343]' : ''
+              } w-full px-[16px] outline-none ${className ? className : ''}`}
             />
           ) : (
             <TextInput
               aria-label={label}
               className={`${
                 error ? '!border-[#bb4343]' : ''
-              } bg-[#EBEBF5] w-full px-[16px] py-[14px] outline-none ${className ? className : ''}`}
+              } bg-[#EBEBF5] w-full px-[16px] py-[14px] outline-none ${
+                className ? className : ''
+              }`}
               id={id}
               label={label}
               onChange={(e) => {

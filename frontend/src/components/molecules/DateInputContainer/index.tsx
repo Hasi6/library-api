@@ -1,4 +1,3 @@
-import { Select } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
 import { DateInput } from '@mantine/dates';
 import moment from 'moment';

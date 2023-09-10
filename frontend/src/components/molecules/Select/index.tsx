@@ -1,6 +1,6 @@
 import FormContainer from '@/containers/FormContainer';
-import { Select, TextInput } from '@mantine/core';
-import { UseFormReturnType, useForm } from '@mantine/form';
+import { Select } from '@mantine/core';
+import { UseFormReturnType } from '@mantine/form';
 
 interface Props<T> {
   className?: string;
@@ -17,7 +17,6 @@ interface Props<T> {
 }
 
 function SelectContainer<T>({
-  className,
   data,
   error,
   form,

@@ -117,7 +117,7 @@ function FormContainer<T>({
             id={schema.id}
             form={form}
             // @ts-ignore
-            value={initialValues?.[schema.id] ? 'Active' : 'Inactive'}
+            value={initialValues?.[schema.id]}
             label={schema.label}
             placeHolder={schema.placeHolder}
             data={schema.options || []}

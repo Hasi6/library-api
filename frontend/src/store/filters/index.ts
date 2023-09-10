@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { Query } from '@/containers/FilterPanel';
+import { Query } from '@/utils/queryParams';
 
 export interface FilterState {
   url: string | null;
@@ -16,7 +16,10 @@ export const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setFilters: (state: FilterState, action: PayloadAction<FilterState>): void => {
+    setFilters: (
+      state: FilterState,
+      action: PayloadAction<FilterState>
+    ): void => {
       state.url = action.payload.url;
       state.params = action.payload.params;
     },
