@@ -49,7 +49,7 @@ app.all('*', async () => {
 
 app.use(errorHandler);
 
-app.listen(PORT, async () => {
+export const server = app.listen(PORT, async () => {
   try {
     await connection.sync();
     console.log(`server started at PORT: ${PORT}`);
