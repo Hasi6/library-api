@@ -51,7 +51,7 @@ const AuthorDetailsPage = () => {
               to: ROUTES.AUTHROS,
             },
             {
-              title: 'Project Details',
+              title: 'Author Details',
               to: ROUTES.AUTHOR_DETAILS.replace(':id', id),
             },
           ]}
